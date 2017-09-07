@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    canvas{
+      display: block;
+      margin:0 auto;
+    }
+  </style>
+</head>
+<body>
+<canvas width="320" height="480" style="border: 1px solid #000"></canvas>
+<!--
+<script>
+
+  var canvas = document.querySelector("canvas");
+  var ctx = canvas.getContext("2d");
+  var backImg = new Image();
+  var upImg = new Image();
+  var isRip = true;
+  var size = 20;
+
+  upImg.onload = function () {
+    ctx.drawImage(upImg, 0, 0, upImg.width, upImg.height, 0, 0, canvas.width, canvas.height);
+  }
+
+  backImg.onload = function () {
+    canvas.onmousedown = function () {
+      isRip = true;
+    }
+
+    canvas.onmouseup = function () {
+      isRip = false;
+    }
+
+    canvas.onmousemove = function (e) {
+      if (isRip) {
+        var x = e.offsetX;
+        var y = e.offsetY;
+        ctx.drawImage(backImg, x - size / 2, y - size / 2, size, size, x - size / 2, y - size / 2, size, size);
+      }
+    }
+  }
+  backImg.src = "02.jpg";
+  upImg.src = "03.jpg";
+
+</script>
+-->
+
+<script>
+
+  var canvas = document.querySelector("canvas");
+  var ctx = canvas.getContext("2d");
+  var isover = false;
+
+  var upImg = new Image();
+  var bgImg = new Image();
+
+  var size = 20;
+
+  upImg.onload = function(){
+    ctx.drawImage(upImg,0,0,bgImg.width,bgImg.height,0,0,canvas.width,canvas.height);
+  }
+
+  bgImg.onload = function(){
+    canvas.onmousedown = function(){
+      isover = true;
+    }
+    canvas.onmouseup = function(){
+      isover = false;
+    }
+    canvas.onmousemove = function(e){
+      if(isover){
+        var x = e.offsetX;
+        var y = e.offsetY;
+        ctx.drawImage(bgImg,x-size/2,y-size/2,size,size,x-size/2,y-size/2,size,size);
+      }
+    }
+  }
+
+
+  upImg.src = "03.jpg";
+  bgImg.src = "02.jpg";
+
+
+</script>
+
+
+</body>
+</html>
